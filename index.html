@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scone Tuesday • Pre‑Order Form</title>
+  <style>
+    :root { --max: 900px; --pad: 14px; --radius: 14px; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; background: #faf8f6; color: #1f2937; }
+    header { background: #f2e9e4; padding: 22px var(--pad); border-bottom: 1px solid #e7ddd7; }
+    header .wrap { max-width: var(--max); margin: 0 auto; }
+    h1 { margin: 0 0 6px; font-size: clamp(1.3rem, 2.4vw, 1.8rem); }
+    p.sub { margin: 0; color: #6b7280; }
+    main { max-width: var(--max); margin: 0 auto; padding: 18px var(--pad) 40px; }
+    form { background: #fff; border: 1px solid #eee3dc; border-radius: var(--radius); padding: 18px; box-shadow: 0 6px 20px rgba(31,41,55,0.06); }
+    fieldset { border: 0; padding: 0; margin: 18px 0; }
+    legend { font-weight: 700; margin-bottom: 10px; }
+    label { display: block; font-weight: 600; margin: 10px 0 6px; }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%; padding: 12px 12px; border-radius: 10px; border: 1px solid #d1d5db; background: #fff; font-size: 16px; outline: none;
+    }
+    input[type="number"] { width: 100%; padding: 10px 10px; border-radius: 10px; border: 1px solid #d1d5db; background: #fff; font-size: 16px; outline: none; }
+    .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 720px) { .row.two { grid-template-columns: 1fr 1fr; } .row.three { grid-template-columns: 1fr 1fr 1fr; } }
+    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; background: #fff; }
+    .muted { color: #6b7280; font-size: 0.95rem; }
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f3f4f6; border: 1px solid #e5e7eb; font-size: 0.85rem; margin-left: 6px; }
+    .qty-grid { display: grid; grid-template-columns: 1fr 90px; gap: 10px; align-items: center; }
+    .totals { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px; background: #f9fafb; border: 1px dashed #e5e7eb; border-radius: 12px; }
+    .error { color: #b91c1c; font-weight: 700; }
+    .ok { color: #065f46; font-weight: 700; }
+    button[type="submit"] { background: #111827; color: white; padding: 14px 18px; border: 0; border-radius: 12px; font-size: 1rem; cursor: pointer; }
+    button[disabled] { opacity: .5; cursor: not-allowed; }
+    .footer-note { font-size: 0.9rem; color: #6b7280; margin-top: 16px; }
+    .hint { font-size: .9rem; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>The Edelweiss Oven — Scone Tuesday Pre‑Orders</h1>
+      <p class="sub">Please place your order for pickup on <strong>Tuesday</strong> (porch pickup in Timmins).</p>
+    </div>
+  </header>
+  <main>
+    <form id="orderForm" method="POST" action="https://formsubmit.co/theedelweissoven@gmail.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="[SCONE ORDER] — Scone Tuesday Pre‑Order">
+      <input type="hidden" name="Timestamp" id="tsField" value="" />
+      <input type="hidden" name="_next" value="/thanks.html" />
+      <input type="hidden" name="_autoresponse" value="Thanks for your Scone Tuesday pre‑order! Please e‑Transfer the total to theedelweissoven@gmail.com within 1 hour to confirm your spot. Pickup is Tuesday during your selected window. — The Edelweiss Oven" />
+
+      <fieldset class="card">
+        <legend>Contact</legend>
+        <div class="row two">
+          <div>
+            <label for="name">Full Name *</label>
+            <input id="name" name="Name" type="text" required />
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="Email" type="email" required />
+          </div>
+        </div>
+        <div class="row two">
+          <div>
+            <label for="phone">Phone *</label>
+            <input id="phone" name="Phone" type="tel" required />
+          </div>
+          <div>
+            <label for="pickup">Pickup Window *</label>
+            <select id="pickup" name="Pickup Window" required>
+              <option value="">Select…</option>
+              <option>Tuesday 8–11 AM</option>
+              <option>Tuesday 11 AM–2 PM</option>
+              <option>Tuesday 2–6 PM</option>
+            </select>
+          </div>
+        </div>
+        <p class="hint">Porch pickup — address sent in confirmation. Please arrive within your selected window.</p>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Order Details</legend>
+        <div class="row two">
+          <div>
+            <label for="size">Pack Size *</label>
+            <select id="size" name="Pack Size" required>
+              <option value="">Select…</option>
+              <option value="3">3‑pack</option>
+              <option value="6">6‑pack</option>
+            </select>
+          </div>
+          <div>
+            <label for="boxes">Number of Boxes *</label>
+            <select id="boxes" name="Number of Boxes" required>
+              <option value="">Select…</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+          </div>
+        </div>
+        <p class="muted">Choose flavour quantities below. Your selections must total <span id="targetTotal">0</span> scones.</p>
+
+        <div id="flavourList" class="row"></div>
+
+        <div class="totals" aria-live="polite">
+          <div>
+            <strong>Total selected:</strong> <span id="sum">0</span> / <span id="need">0</span>
+          </div>
+          <div id="status" class="error">Please complete your flavour choices.</div>
+        </div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Payment</legend>
+        <div class="row two">
+          <div>
+            <label for="pay">Payment Method *</label>
+            <select id="pay" name="Payment Method" required>
+              <option value="">Select…</option>
+              <option>Interac e‑Transfer (Preferred)</option>
+              <option>QR Code on Pickup</option>
+            </select>
+          </div>
+          <div>
+            <label for="notes">Order Notes (optional)</label>
+            <input id="notes" name="Notes" type="text" placeholder="e.g., no nuts, gift note, etc." />
+          </div>
+        </div>
+        <p class="hint">For e‑Transfer, please send payment to <strong>theedelweissoven@gmail.com</strong> within 1 hour to confirm your spot. Pre‑paid orders are prioritized.</p>
+      </fieldset>
+
+      <button id="submitBtn" type="submit" disabled>Submit Pre‑Order</button>
+      <div class="footer-note">By submitting, you agree to porch pickup policies. Prepared in a <em>nut‑friendly kitchen</em>.</div>
+    </form>
+  </main>
+
+  <script>
+    const FLAVOURS = [
+      'Vanilla',
+      'Apple Cinnamon',
+      'Pumpkin',
+      'Biscoff',
+      'Cranberry Orange',
+      'Chocolate Hazelnut',
+    ];
+    const form = document.getElementById('orderForm');
+    const sizeEl = document.getElementById('size');
+    const boxesEl = document.getElementById('boxes');
+    const flavourList = document.getElementById('flavourList');
+    const sumEl = document.getElementById('sum');
+    const needEl = document.getElementById('need');
+    const targetTotalEl = document.getElementById('targetTotal');
+    const statusEl = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+    const tsField = document.getElementById('tsField');
+
+    function buildFlavours(maxQty) {
+      flavourList.innerHTML = '';
+      FLAVOURS.forEach((name, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'qty-grid card';
+        const label = document.createElement('label');
+        label.textContent = name;
+        label.setAttribute('for', 'flv_' + idx);
+        const select = document.createElement('select');
+        select.name = `Flavour — ${name}`;
+        select.id = 'flv_' + idx;
+        const max = Math.min(maxQty, 24);
+        for (let i = 0; i <= max; i++) {
+          const opt = document.createElement('option');
+          opt.value = String(i);
+          opt.textContent = String(i);
+          select.appendChild(opt);
+        }
+        select.addEventListener('change', updateTotals);
+        wrap.appendChild(label);
+        wrap.appendChild(select);
+        flavourList.appendChild(wrap);
+      });
+    }
+
+    function neededTotal() {
+      const size = Number(sizeEl.value || 0);
+      const boxes = Number(boxesEl.value || 0);
+      return size * boxes;
+    }
+
+    function currentSum() {
+      const selects = flavourList.querySelectorAll('select');
+      let s = 0;
+      selects.forEach(sel => s += Number(sel.value || 0));
+      return s;
+    }
+
+    function updateTotals() {
+      const need = neededTotal();
+      const sum = currentSum();
+      needEl.textContent = String(need);
+      targetTotalEl.textContent = String(need);
+      sumEl.textContent = String(sum);
+
+      let ok = true;
+      let msg = '';
+      if (!need) { ok = false; msg = 'Select a pack size and number of boxes.'; }
+      else if (sum < need) { ok = false; msg = `You still need ${need - sum} more scone(s).`; }
+      else if (sum > need) { ok = false; msg = `Too many selected by ${sum - need}. Reduce quantities.`; }
+
+      statusEl.textContent = msg || 'Perfect! Quantities match.';
+      statusEl.className = msg ? 'error' : 'ok';
+      submitBtn.disabled = !ok;
+    }
+
+    function onPackChange() {
+      const need = neededTotal();
+      buildFlavours(need);
+      updateTotals();
+    }
+
+    function setTimestamp() {
+      const now = new Date();
+      tsField.value = now.toLocaleString();
+    }
+
+    sizeEl.addEventListener('change', onPackChange);
+    boxesEl.addEventListener('change', onPackChange);
+    form.addEventListener('submit', setTimestamp);
+
+    buildFlavours(0);
+    updateTotals();
+  </script>
+</body>
+</html>
